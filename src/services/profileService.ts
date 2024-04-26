@@ -24,6 +24,8 @@ class ProfileService {
             username: true,
             fullname: true,
             email: true,
+            follower: true,
+            following: true,
 
             thread: {
               select: {
@@ -55,6 +57,7 @@ class ProfileService {
                 },
               },
             },
+
             _count: {
               select: {
                 follower: true,
@@ -109,6 +112,8 @@ class ProfileService {
                 },
               },
             },
+            follower: true,
+            following: true,
             _count: {
               select: {
                 follower: true,

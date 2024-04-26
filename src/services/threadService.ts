@@ -14,6 +14,8 @@ export default new (class ThreadService {
     payload: IThread,
     files: { [fieldname: string]: Express.Multer.File[] }
   ) {
+    console.log("FILES LENGHT", files);
+
     const thread = await prisma.thread.create({
       data: {
         ...payload,

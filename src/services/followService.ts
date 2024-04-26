@@ -49,22 +49,6 @@ export default new (class FollowService {
     }
   }
 
-  async getFollowers(userId: number) {
-    try {
-      const followingUsers = await prisma.follow.findMany({
-        where: {
-          followingId: userId,
-        },
-        include: {
-          follower: true,
-        },
-      });
-      return followingUsers.map((follow) => follow.follower);
-    } catch (error) {
-      throw new Error("Failed to get following users");
-    }
-  }
-
   async getFollowerUsers(userId: number) {
     try {
       const followingUsers = await prisma.follow.findMany({
@@ -82,6 +66,22 @@ export default new (class FollowService {
               },
             },
           },
+        },
+      });
+      return followingUsers.map((follow) => follow.follower);
+    } catch (error) {
+      throw new Error("Failed to get following users");
+    }
+  }
+
+  async getFollowers(userId: number) {
+    try {
+      const followingUsers = await prisma.follow.findMany({
+        where: {
+          followingId: userId,
+        },
+        include: {
+          follower: true,
         },
       });
       return followingUsers.map((follow) => follow.follower);

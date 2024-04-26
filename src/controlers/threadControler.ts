@@ -71,7 +71,6 @@ export default new (class threadController {
   async getThreadUser(req: Request, res: Response): Promise<void> {
     try {
       const { userId } = req.params;
-      console.log("userId:", userId);
 
       const thread = await threadService.getThreadById(+userId);
       res.json({
